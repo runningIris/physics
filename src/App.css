@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn {
+  width: 200px;
+  height: 60px;
+  border-radius: 20px;
+  background-color: rgb(71, 253, 193);
   color: white;
+  text-align: center;
+  line-height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+.btn:hover,
+.btn:active {
+  opacity: 0.8;
+}
+.ball {
+  margin-right: 160px;
+  width: 50px;
+  height: 50px;
+  border-radius: 27px;
+  border: 2px solid black;
+  position: relative;
+  animation-duration: 20s;
+  animation-timing-function: cubic-bezier(0.16, 0.68, 0.46, 0.9);
+  animation-name: ballRelease;
+  animation-fill-mode: forwards;
 }
 
-.App-link {
-  color: #61dafb;
+.pause {
+  animation-play-state: paused;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.running {
+  animation-play-state: running;
+}
+
+.text {
+  position: absolute;
+  width: 600px;
+  left: 150px;
+}
+
+.pulling {
+  position: absolute;
+  height: 300px;
+  width: 2px;
+  background: #2222ff;
+  bottom: 25px;
+  left: 25px;
+  animation-duration: 20s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.46, 0.9);
+  animation-name: pullingUp;
+  animation-fill-mode: forwards;
+}
+.pulling .arrow {
+  display: block;
+  width: 10px;
+  height: 2px;
+  color: #2222ff;
+  position: absolute;
+  top: 0px;
+  font-size: 24px;
+  transform: rotate(270deg) translate(-4px, -23px);
+}
+
+.gravity {
+  position: absolute;
+  height: 100px;
+  width: 2px;
+  background: #dd5566;
+  top: 25px;
+  left: 25px;
+}
+.gravity .arrow {
+  display: block;
+  width: 10px;
+  height: 2px;
+  color: #dd5566;
+  position: absolute;
+  bottom: 0px;
+  font-size: 24px;
+  transform: rotate(270deg) translate(0, -23px);
+}
+
+p {
+  position: absolute;
+}
+
+@keyframes ballRelease {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-700px);
+  }
+  55% {
+    transform: translateY(-700px);
+  }
+  90% {
+    transform: translateY(-300px);
+    opacity: 1;
+  }
+  91% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pullingUp {
+  0% {
+    height: 300px;
+  }
+  10% {
+    height: 300px;
+  }
+  50% {
+    height: 40px;
+  }
+  55% {
+    height: 40px;
+  }
+  90% {
+    height: 140px;
   }
 }
